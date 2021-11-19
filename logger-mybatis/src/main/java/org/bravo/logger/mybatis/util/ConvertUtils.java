@@ -4,7 +4,7 @@
  */
 package org.bravo.logger.mybatis.util;
 
-import org.bravo.logger.mybatis.model.ColumnChangeData;
+import org.bravo.logger.mybatis.pojo.ColumnChangeData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.Map;
 
 /**
  * @author hejianbing
- * @version @Id: DataChangeUtils.java, v 0.1 2021年11月12日 10:18 hejianbing Exp $
+ * @version @Id: ConvertUtils.java, v 0.1 2021年11月12日 10:18 hejianbing Exp $
  */
-public class DataChangeUtils {
+public class ConvertUtils {
 
     public static List<ColumnChangeData> mapToColumnList(Map<String, Object> dataMap){
         List<ColumnChangeData> columnList = new ArrayList<>();

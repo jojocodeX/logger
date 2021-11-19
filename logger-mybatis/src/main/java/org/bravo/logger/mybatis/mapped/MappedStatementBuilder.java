@@ -16,7 +16,6 @@ import org.bravo.logger.commons.context.LoggerContext;
 import org.bravo.logger.commons.context.RequestScopeContext;
 import org.bravo.logger.commons.enums.SqlCmd;
 import org.bravo.logger.mybatis.mapped.sqlparser.SqlMeta;
-import org.bravo.logger.mybatis.util.JsqlParserUtil;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;

@@ -7,10 +7,10 @@ import org.apache.ibatis.session.defaults.DefaultSqlSession;
 import org.bravo.logger.commons.model.Identity;
 import org.bravo.logger.commons.model.ChangeItem;
 import org.bravo.logger.mybatis.mapped.MybatisMethodInvocation;
-import org.bravo.logger.mybatis.model.ColumnChangeData;
-import org.bravo.logger.mybatis.model.RowChangeData;
+import org.bravo.logger.mybatis.pojo.ColumnChangeData;
+import org.bravo.logger.mybatis.pojo.RowChangeData;
 import org.bravo.logger.mybatis.mapped.sqlparser.SqlMeta;
-import org.bravo.logger.mybatis.util.DataChangeUtils;
+import org.bravo.logger.mybatis.util.ConvertUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +32,7 @@ public class InsertSqlCmdHandler implements SqlCmdHandler {
 		List<RowChangeData> rowChangeDataList = new ArrayList<>();
 
 		for(Map<String, Object> insertDataMap : requestParameters){
-			List<ColumnChangeData> columnList = DataChangeUtils.mapToColumnList(insertDataMap);
+			List<ColumnChangeData> columnList = ConvertUtils.mapToColumnList(insertDataMap);
 			RowChangeData changeData = new RowChangeData();
 			changeData.setAfterColumnList(columnList);
 

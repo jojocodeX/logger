@@ -19,7 +19,7 @@ import org.bravo.logger.mybatis.mapped.parameter.ParameterMappingParser;
 import org.bravo.logger.mybatis.mapped.sqlparser.DefaultSqlParser;
 import org.bravo.logger.mybatis.mapped.sqlparser.SqlMeta;
 import org.bravo.logger.mybatis.mapped.sqlparser.SqlParser;
-import org.bravo.logger.mybatis.model.RowChangeData;
+import org.bravo.logger.mybatis.pojo.RowChangeData;
 
 import java.util.ArrayList;
 import java.util.List;

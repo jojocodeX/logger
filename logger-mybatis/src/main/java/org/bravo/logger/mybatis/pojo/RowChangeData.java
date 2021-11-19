@@ -1,4 +1,4 @@
-package org.bravo.logger.mybatis.model;
+package org.bravo.logger.mybatis.pojo;
 
 import lombok.Getter;
 import lombok.Setter;

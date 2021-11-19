@@ -10,7 +10,7 @@ import org.bravo.logger.commons.context.MethodInvokeContext;
 import org.bravo.logger.commons.enums.SqlCmd;
 import org.bravo.logger.commons.model.ChangeContent;
 import org.bravo.logger.commons.model.ChangeItem;
-import org.bravo.logger.mybatis.model.RowChangeData;
+import org.bravo.logger.mybatis.pojo.RowChangeData;
 
 import java.util.ArrayList;
 import java.util.List;

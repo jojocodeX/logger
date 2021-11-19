@@ -1,7 +1,7 @@
 package org.bravo.logger.mybatis.processor;
 
 import org.bravo.logger.commons.enums.SqlCmd;
-import org.bravo.logger.mybatis.model.RowChangeData;
+import org.bravo.logger.mybatis.pojo.RowChangeData;
 
 import java.util.List;
 /**

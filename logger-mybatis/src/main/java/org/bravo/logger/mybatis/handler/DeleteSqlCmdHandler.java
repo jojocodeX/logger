@@ -3,10 +3,10 @@ package org.bravo.logger.mybatis.handler;
 import lombok.extern.slf4j.Slf4j;
 import org.bravo.logger.mybatis.mapped.MybatisMethodInvocation;
 import org.bravo.logger.mybatis.mapped.SelectMappedStatement;
-import org.bravo.logger.mybatis.model.ColumnChangeData;
-import org.bravo.logger.mybatis.model.RowChangeData;
+import org.bravo.logger.mybatis.pojo.ColumnChangeData;
+import org.bravo.logger.mybatis.pojo.RowChangeData;
 import org.bravo.logger.mybatis.mapped.sqlparser.SqlMeta;
-import org.bravo.logger.mybatis.util.DataChangeUtils;
+import org.bravo.logger.mybatis.util.ConvertUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class DeleteSqlCmdHandler implements SqlCmdHandler {
 		List<RowChangeData> rowChangeDataList = new ArrayList<>();
 
 		for (Map<String, Object> beforeDataMap : beforeResults) {
-			List<ColumnChangeData> columnList = DataChangeUtils.mapToColumnList(beforeDataMap);
+			List<ColumnChangeData> columnList = ConvertUtils.mapToColumnList(beforeDataMap);
 			RowChangeData rowChangeData = new RowChangeData();
 			rowChangeData.setBeforeColumnList(columnList);
 			rowChangeData.setTableName(sqlMeta.getTableName());

@@ -13,8 +13,8 @@ import org.bravo.logger.commons.context.RequestScopeContext;
 import org.bravo.logger.commons.model.ChangeItem;
 import org.bravo.logger.mybatis.mapped.MybatisMethodInvocation;
 import org.bravo.logger.mybatis.mapped.SelectMappedStatement;
-import org.bravo.logger.mybatis.model.ColumnChangeData;
-import org.bravo.logger.mybatis.model.RowChangeData;
+import org.bravo.logger.mybatis.pojo.ColumnChangeData;
+import org.bravo.logger.mybatis.pojo.RowChangeData;
 import org.bravo.logger.mybatis.mapped.sqlparser.SqlMeta;
 import org.bravo.logger.mybatis.util.MybatisUtils;
 
@@ -209,8 +209,6 @@ public class UpdateSqlCmdHandler implements SqlCmdHandler {
 
     /**
      * 合并两个list
-     * @param map1
-     * @param list2
      * */
     private List<Map<String, Object>> combine(Map<String, Object> map1,
                                               List<Map<String, Object>> list2) {
@@ -222,7 +220,6 @@ public class UpdateSqlCmdHandler implements SqlCmdHandler {
             ret.add(map1);
             return ret;
         }
-        List<Map<String, Object>> ret = new ArrayList<>();
         for (Map<String, Object> map2 : list2) {
             map2.putAll(map1);
         }
@@ -243,10 +240,10 @@ public class UpdateSqlCmdHandler implements SqlCmdHandler {
      * g = -1 SignedExpresssion
      * h = 0.5 DoubleValue
      * i = a+b Addition(Column Cloumn)
-     * @param sqlParserInfo sql
+     * @param sqlMeta sql
      * @param beforeResults 原始值
      * */
-    private List<Map<String, Object>> getFromSpel(SqlMeta sqlParserInfo,
+    private List<Map<String, Object>> getFromSpel(SqlMeta sqlMeta,
                                                   List<Map<String, Object>> beforeResults,
                                                   boolean mapUnderscoreToCamelCase) {
         if (beforeResults == null) {
@@ -256,8 +253,8 @@ public class UpdateSqlCmdHandler implements SqlCmdHandler {
         for (Map<String, Object> beforeResult : beforeResults) {
             Map<String, Object> changeMap = new CaseInsensitiveMap<>();
 
-            List<Expression> expressions = sqlParserInfo.getExpressions();
-            List<Column> columns = sqlParserInfo.getColumns();
+            List<Expression> expressions = sqlMeta.getExpressions();
+            List<Column> columns = sqlMeta.getColumns();
             for (int i = 0; i < expressions.size(); i++) {
                 Expression expression = expressions.get(i);
                 Column column = columns.get(i);
@@ -316,9 +313,6 @@ public class UpdateSqlCmdHandler implements SqlCmdHandler {
 
     /**
      * 表达式求值，目前仅支持+ - * / %
-     * @param binaryExpression 表达式
-     * @param beforeResult 列的原始值
-     * @param operator
      * @param mapUnderscoreToCamelCase 下划线转驼峰
      * */
     private String calc(BinaryExpression binaryExpression, Map<String, Object> beforeResult,
